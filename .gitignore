@@ -1,0 +1,40 @@
+# Logs y archivos temporales
+*.log
+*.tmp
+*-temp*
+
+# Archivos de configuración con credenciales
+*config*.ps1
+*credentials*
+*secrets*
+
+# Archivos de PowerShell
+*.ps1xml
+
+# Archivos de Azure CLI
+.azure/
+
+# Directorios de logs
+logs/
+output/
+
+# Archivos de backup
+*.bak
+*.backup
+
+# Archivos de Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Archivos de configuración específicos del usuario
+*.local.ps1
+*.personal.ps1
+
+# Resultados de tests específicos
+test-results/
+test-output/
+
+# Variables de entorno locales
+.env
+.env.local

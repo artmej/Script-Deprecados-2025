@@ -1,0 +1,43 @@
+# Archivo de ejemplo con Resource IDs para migración por lotes
+# 
+# Formato: Un Resource ID por línea
+# - Las líneas que comienzan con # son comentarios y se ignoran
+# - Las líneas vacías se ignoran
+# - Cada Resource ID debe seguir el formato estándar de Azure:
+#   /subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/{provider}/{resource-type}/{resource-name}
+#
+# EJEMPLOS DE RESOURCE IDS VÁLIDOS:
+
+# Máquinas virtuales con discos no administrados
+/subscriptions/12345678-1234-1234-1234-123456789abc/resourceGroups/rg-production/providers/Microsoft.Compute/virtualMachines/vm-web-01
+/subscriptions/12345678-1234-1234-1234-123456789abc/resourceGroups/rg-production/providers/Microsoft.Compute/virtualMachines/vm-app-01
+/subscriptions/12345678-1234-1234-1234-123456789abc/resourceGroups/rg-production/providers/Microsoft.Compute/virtualMachines/vm-db-01
+
+# Load Balancers básicos
+/subscriptions/12345678-1234-1234-1234-123456789abc/resourceGroups/rg-production/providers/Microsoft.Network/loadBalancers/lb-web-basic
+/subscriptions/12345678-1234-1234-1234-123456789abc/resourceGroups/rg-production/providers/Microsoft.Network/loadBalancers/lb-app-basic
+
+# Public IPs básicas
+/subscriptions/12345678-1234-1234-1234-123456789abc/resourceGroups/rg-production/providers/Microsoft.Network/publicIPAddresses/pip-web-basic
+/subscriptions/12345678-1234-1234-1234-123456789abc/resourceGroups/rg-production/providers/Microsoft.Network/publicIPAddresses/pip-app-basic
+
+# Availability Sets no administrados
+/subscriptions/12345678-1234-1234-1234-123456789abc/resourceGroups/rg-production/providers/Microsoft.Compute/availabilitySets/avset-web
+
+# NOTAS IMPORTANTES:
+# 1. Los recursos se procesarán en orden de prioridad:
+#    - Prioridad 1 (Alta): VMs y Availability Sets
+#    - Prioridad 2 (Media): Load Balancers  
+#    - Prioridad 3 (Baja): Public IPs
+#
+# 2. Las dependencias se verifican automáticamente:
+#    - Los Public IPs no se migrarán si tienen Load Balancers básicos asociados
+#    - Los Load Balancers se migrarán antes que sus Public IPs
+#
+# 3. Para usar este archivo:
+#    .\Invoke-AzureResourceMigration.ps1 -ResourceIdFile ".\ResourceIds-Example.txt"
+#
+# 4. Opciones adicionales:
+#    - Agregar -ContinueOnError para continuar si falla alguna migración
+#    - Agregar -Force para omitir confirmaciones
+#    - Agregar -WhatIf para simular sin ejecutar cambios
