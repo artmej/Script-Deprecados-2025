@@ -476,4 +476,5 @@ function Remove-OrphanedVHDs {
 }
 
 # Exportar funciones para uso en otros scripts
-Export-ModuleMember -Function Get-UnmanagedDiskReport, Test-MigrationReadiness, Find-OrphanedVHDs, Remove-OrphanedVHDs
+# Export-ModuleMember -Function Get-UnmanagedDiskReport, Test-MigrationReadiness, Find-OrphanedVHDs, Remove-OrphanedVHDs
+# Nota: Export-ModuleMember no es necesario cuando se usa dot-sourcing (.)

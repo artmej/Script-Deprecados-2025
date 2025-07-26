@@ -94,9 +94,6 @@ param(
     [string]$ResourceId,
 
     [Parameter(Mandatory = $false)]
-    [switch]$WhatIf,
-
-    [Parameter(Mandatory = $false)]
     [switch]$Force,
 
     [Parameter(Mandatory = $false)]
@@ -412,6 +409,8 @@ function Show-BatchMigrationSummary {
     Write-Log ""
     Write-Log "======================================"
 }
+
+function Test-Prerequisites {
     Write-Log "Verificando prerequisitos maestros..."
     
     # Verificar módulos de Azure

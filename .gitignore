@@ -38,3 +38,33 @@ test-output/
 # Variables de entorno locales
 .env
 .env.local
+
+# === LOGS DE MIGRACIÓN AZURE ===
+# Logs específicos de scripts de migración
+BasicToStandardPublicIP_*.log
+BasicToStandardLoadBalancer_*.log
+UnmanagedToManagedDisks_*.log
+AzureResourceMigration_*.log
+
+# Archivos de backup de configuración
+PublicIP_*_*.json
+LoadBalancer_*_*.json
+VM_*_*.json
+*_backup_*.json
+
+# Reportes de migración
+migration-report-*.html
+migration-report-*.json
+disk-analysis-*.csv
+resource-inventory-*.xlsx
+
+# Archivos temporales de PowerShell
+*.psess
+*.vsp
+*.vsps
+
+# === ARCHIVOS DE PRUEBA ===
+# Resultados de pruebas de migración
+test-migration-*.log
+migration-test-*.json
+validation-report-*.html
